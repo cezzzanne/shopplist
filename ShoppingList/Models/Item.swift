@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Item {
+class Item: Codable {
     var name: String
     var isChecked: Bool
     init(name: String, isChecked: Bool = false) {
@@ -23,5 +23,24 @@ class Item {
             items.append(item)
         }
         return items
+    }
+    
+    func toggleCheck() -> Item {
+        return Item(name: name, isChecked: !isChecked)
+    }
+    
+}
+
+extension Array where Element == Item {
+    func save() {
+        let data = try? PropertyListEncoder().encode(self)
+        UserDefaults.standard.set(data, forKey: String(describing: Element.self))
+        UserDefaults.standard.synchronize()
+    }
+    static func load() -> [Element] {
+        if let data = UserDefaults.value(forKey: String(describing: Element.self)) as? Data, let items = try? PropertyListDecoder.decode([Element].self, from: data) {
+            return items
+        }
+        return []
     }
 }
