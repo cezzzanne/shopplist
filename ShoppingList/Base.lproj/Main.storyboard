@@ -44,13 +44,10 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="Jd5-dM-2TM">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uyY-L0-x3i">
                             <connections>
-                                <action selector="AddItem:" destination="DjR-WU-D2k" id="Uxh-bo-oAZ"/>
+                                <action selector="addItem:" destination="DjR-WU-D2k" id="pjO-UV-mdE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="AddItem" destination="uyY-L0-x3i" id="Qmw-X2-mVQ"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcx-G1-qjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

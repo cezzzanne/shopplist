@@ -68,8 +68,7 @@ class ItemTableViewController: UITableViewController {
         return cell
     }
 
-    
-    @IBAction func AddItem(_ sender: Any) {
+    @IBAction func addItem(_ sender: Any) {
         let alert = UIAlertController(title: "New shopping list item",
                                       message: "Enter item to add to the shopping list:",
                                       preferredStyle: .alert)
@@ -90,7 +89,7 @@ class ItemTableViewController: UITableViewController {
         self.present(alert, animated: true, completion: nil)
         
     }
-    
+
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
