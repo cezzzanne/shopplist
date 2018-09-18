@@ -10,7 +10,11 @@ import UIKit
 
 class ItemTableViewController: UITableViewController {
     
-    var items: [Item] = Item.fake(10)
+    var items: [Item] = [Item].load() {
+        didSet {
+            items.save()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,8 +126,7 @@ class ItemTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
-        item.isChecked = !item.isChecked
+        items[indexPath.row] = items[indexPath.row].toggleCheck()
         tableView.reloadRows(at: [indexPath], with: .middle)
     }
 

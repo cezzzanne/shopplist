@@ -38,7 +38,10 @@ extension Array where Element == Item {
         UserDefaults.standard.synchronize()
     }
     static func load() -> [Element] {
-        if let data = UserDefaults.value(forKey: String(describing: Element.self)) as? Data, let items = try? PropertyListDecoder.decode([Element].self, from: data) {
+        if let data = UserDefaults.standard.value(forKey:
+            String(describing: Element.self)) as? Data,
+            let items = try? PropertyListDecoder().decode([Element].self,
+                                                          from: data){
             return items
         }
         return []
